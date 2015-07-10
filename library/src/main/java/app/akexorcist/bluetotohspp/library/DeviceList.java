@@ -184,6 +184,7 @@ public class DeviceList extends Activity {
 	
 	            // Set result and finish this Activity
 	            setResult(Activity.RESULT_OK, intent);
+                Log.d(TAG, "HACA ESTOY PERRAS ");
 	            finish();
             }
         }
@@ -209,9 +210,9 @@ public class DeviceList extends Activity {
                 	if(mPairedDevicesArrayAdapter.getItem(0).equals(strNoFound)) {
                 		mPairedDevicesArrayAdapter.remove(strNoFound);
                 	}
-                	mPairedDevicesArrayAdapter.add(device.getName() + "\n" + device.getAddress());
+
                 }
-                
+                mPairedDevicesArrayAdapter.add(device.getName() + "\n" + device.getAddress());
             // When discovery is finished, change the Activity title
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
                 setProgressBarIndeterminateVisibility(false);

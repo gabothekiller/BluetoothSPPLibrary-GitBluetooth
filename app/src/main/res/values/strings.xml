@@ -8,5 +8,6 @@
     <string name="title_activity_auto_connect">AutoConnectActivity</string>
     <string name="title_activity_device_list">DeviceListActivity</string>
     <string name="title_activity_terminal">TerminalActivity</string>
+    <string name="title_activity_graph">GraphActivity</string>
 
 </resources>
