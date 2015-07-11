@@ -29,6 +29,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+
 import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 import app.akexorcist.bluetotohspp.library.BluetoothState;
 import app.akexorcist.bluetotohspp.library.DeviceList;
@@ -37,6 +40,7 @@ import app.akexorcist.bluetotohspp.library.BluetoothSPP.OnDataReceivedListener;
 
 public class TerminalActivity extends Activity {
     BluetoothSPP bt;
+    ArrayList<Object[]> graphData = new ArrayList<Object[]>();
 
     TextView textStatus, textRead;
     EditText etMessage;
@@ -64,6 +68,15 @@ public class TerminalActivity extends Activity {
         bt.setOnDataReceivedListener(new OnDataReceivedListener() {
             public void onDataReceived(byte[] data, String message) {
                 textRead.append(message + "\n");
+                String[] bluetoothData = message.split(",");
+
+                int sensor1 = Integer.valueOf(bluetoothData[0]);
+                int sensor2 = Integer.valueOf(bluetoothData[1]);
+                int sensor3 = Integer.valueOf(bluetoothData[2]);
+                String date = bluetoothData[3];
+
+                Object[] valuesAndDate = {sensor1, sensor2, sensor3 , date};
+                graphData.add(valuesAndDate);
             }
         });
 

@@ -356,9 +356,10 @@ public class BluetoothService {
             while (true) {
                 try {
                     int data = mmInStream.read();
-                    if(data == 0x0A) { 
+                    if(data == 0x0A) {
                     } else if(data == 0x0D) {
                         buffer = new byte[arr_byte.size()];
+                        //Log.i(TAG, "ON LISTENIG " + "SIZE OF DAAT IS " + arr_byte.size());
                         for(int i = 0 ; i < arr_byte.size() ; i++) {
                             buffer[i] = arr_byte.get(i).byteValue();
                         }
@@ -367,6 +368,7 @@ public class BluetoothService {
                                 , buffer.length, -1, buffer).sendToTarget();
                         arr_byte = new ArrayList<Integer>();
                     } else {
+                        Log.i(TAG, "data " + data);
                         arr_byte.add(data);
                     }
                 } catch (IOException e) {
